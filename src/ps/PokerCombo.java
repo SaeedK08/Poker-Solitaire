@@ -1,4 +1,4 @@
-package poker_solitaire.ps;
+package poker_solitaire.src.ps;
 
 public enum PokerCombo {
     ROYAL_FLUSH(30), 

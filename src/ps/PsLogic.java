@@ -1,12 +1,12 @@
-package poker_solitaire.ps;
+package poker_solitaire.src.ps;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import poker_solitaire.cardutils.Card;
-import poker_solitaire.cardutils.Deck;
-import poker_solitaire.cardutils.Pile;
+import poker_solitaire.src.cardutils.Card;
+import poker_solitaire.src.cardutils.Deck;
+import poker_solitaire.src.cardutils.Pile;
 
 public class PsLogic implements IPsLogic {
     private Card nextCard;
@@ -37,7 +37,7 @@ public class PsLogic implements IPsLogic {
         return this.cardCount;
     }
 
-    public Card pickNextCard() {
+    public Card pickNextCard() throws IllegalStateException {
         if (nextCard == null) {
             nextCard = deck.dealCard();
             return nextCard;
@@ -46,7 +46,9 @@ public class PsLogic implements IPsLogic {
             throw new IllegalStateException(" Can't pick another card ");
     }
     
-    public void addCardToPile(int pileIndex) {
+    public void addCardToPile(int pileIndex) throws IllegalStateException {
+        if (isPileFull(pileIndex))
+            return;
         if (nextCard != null) {
             piles.get(pileIndex).add(nextCard);
             nextCard = null;
@@ -72,6 +74,12 @@ public class PsLogic implements IPsLogic {
             points += combo.getValue();
         }
         return points;
+    }
+
+    public boolean isPileFull(int pileIndex) {
+        if (pileIndex < 0 || pileIndex >= 5)
+            return true;
+        return piles.get(pileIndex).getSize() >= 5;
     }
 
     @Override

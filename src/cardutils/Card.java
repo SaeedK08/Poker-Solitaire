@@ -1,4 +1,4 @@
-package poker_solitaire.cardutils;
+package poker_solitaire.src.cardutils;
 
 public class Card {
     private final Rank rank;

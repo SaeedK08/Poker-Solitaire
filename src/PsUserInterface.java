@@ -1,12 +1,12 @@
-package poker_solitaire;
+package poker_solitaire.src;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import poker_solitaire.ps.PsLogic;
-import poker_solitaire.cardutils.Pile;
-import poker_solitaire.cardutils.Card;
+import poker_solitaire.src.ps.PsLogic;
+import poker_solitaire.src.cardutils.Pile;
+import poker_solitaire.src.cardutils.Card;
 
 public class PsUserInterface {
     private Scanner scanner;
@@ -48,10 +48,15 @@ public class PsUserInterface {
             do {
                 System.out.println("Select a pile, index[0...4]: ");
                 input = scanner.nextLine();
-                if (input.toUpperCase().charAt(0) == 'X')   return;
-
+                if (input.toUpperCase().charAt(0) == 'X')   
+                    return;
                 pileIndex = Integer.parseInt(input);
-            } while(pileIndex >= 5);
+                if (game.isPileFull(pileIndex))
+                {
+                    pileIndex = -1;
+                    System.out.println("Pile is full");
+                }
+            } while(pileIndex < 0);
             game.addCardToPile(pileIndex);
         }
         System.out.println("Game is over!");

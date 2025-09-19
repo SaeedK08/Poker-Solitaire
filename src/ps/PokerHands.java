@@ -1,31 +1,30 @@
-package poker_solitaire.ps;
+package poker_solitaire.src.ps;
 
 import java.util.Arrays;
 
-import poker_solitaire.cardutils.Pile;
-import poker_solitaire.cardutils.Rank;
-import poker_solitaire.cardutils.Suit;
+import poker_solitaire.src.cardutils.Pile;
+import poker_solitaire.src.cardutils.Rank;
+import poker_solitaire.src.cardutils.Suit;
 
 public class PokerHands {
     private PokerHands() {
         // Prevent instantiation
     }
     public static PokerCombo getPokerCombo(Pile hand) {
-        int max = 0;
         boolean flush = false;
         int[] rankFreq = new int[13];
+
+        // Check for flush
         for(Suit s : Suit.values()) {
             if (hand.nrOfSuit(s) == hand.getSize())
                 flush = true;
         }
+        
         for(Rank r : Rank.values()) {
             rankFreq[r.getValue() - 1] = hand.nrOfRank(r);
         }
-        for (int i = 0; i < rankFreq.length; i++) {
-            if (rankFreq[i] > max)
-                max = rankFreq[i];
-        }
-        switch (max) {
+
+        switch (getHighestRankFreq(rankFreq)) {
             case 1:
                 if (flush && isRoyalFlush(hand))
                     return PokerCombo.ROYAL_FLUSH;
@@ -58,6 +57,15 @@ public class PokerHands {
             if (array[i] == 2)  freq++;
         }
         return freq == 2;
+    }
+
+    private static int getHighestRankFreq(int[] rankFreq) {
+        int highestFreq = 0;
+        for (int i = 0; i < rankFreq.length; i++) {
+            if (rankFreq[i] > highestFreq)
+                highestFreq = rankFreq[i];
+        }
+        return highestFreq;
     }
 
     private static boolean isRankConsecutive(Pile hand) {

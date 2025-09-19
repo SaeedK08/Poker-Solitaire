@@ -1,3 +1,3 @@
-javac -d Poker_Solitaire/bin Poker_Solitaire/cardutils/*.java Poker_Solitaire/ps/*.java Poker_Solitaire/*.java
-cd Poker_Solitaire/bin/
-java Poker_Solitaire/Main  
+javac -d poker_solitaire/bin poker_solitaire/src/cardutils/*.java poker_solitaire/src/ps/*.java poker_solitaire/src/*.java
+java -cp poker_solitaire/bin/ poker_solitaire/src/Main  
+# cd poker_solitaire/bin/

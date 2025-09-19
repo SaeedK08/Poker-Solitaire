@@ -1,7 +1,7 @@
-package poker_solitaire.ps;
+package poker_solitaire.src.ps;
 
-import poker_solitaire.cardutils.Card;
-import poker_solitaire.cardutils.Pile;
+import poker_solitaire.src.cardutils.Card;
+import poker_solitaire.src.cardutils.Pile;
 
 import java.util.List;
 

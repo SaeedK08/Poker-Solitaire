@@ -1,4 +1,4 @@
-package poker_solitaire.cardutils;
+package poker_solitaire.src.cardutils;
 
 import java.util.ArrayList;
 import java.util.Arrays;

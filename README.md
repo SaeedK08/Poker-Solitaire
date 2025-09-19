@@ -14,7 +14,7 @@ The goal of the game is to arrange 25 cards into a 5×5 grid to form the best po
 
 1. Run this line in your terminal: 
     <pre lang="markdown"> git clone https://github.com/SaeedK08/poker_solitaire.git </pre>
-2. Run in the current directoy: 
+2. Run in the current directory: 
     <pre lang="markdown"> ./poker_solitaire/build.sh </pre>
 > [!NOTE]
 > The build script needs to be run in the directory you cloned the repo to.
